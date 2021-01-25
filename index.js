@@ -1,13 +1,13 @@
 let localStream;
       
-// カメラ映像取得
+// 音声取得
 navigator.mediaDevices.getUserMedia({audio: true})
   .then( stream => {
-  // 成功時にvideo要素にカメラ映像をセットし、再生
+  // 成功時にaudio要素にカメラ映像をセットし、再生
   const audioElm = document.getElementById('my-video');
   audioElm.srcObject = stream;
   audioElm.play();
-  // 着信時に相手にカメラ映像を返せるように、グローバル変数に保存しておく
+  // 着信時に相手に音声を返せるように、グローバル変数に保存しておく
   localStream = stream;
 }).catch( error => {
   // 失敗時にはエラーログを出力
@@ -33,7 +33,7 @@ document.getElementById('make-call').onclick = () => {
 // イベントリスナを設置する関数
 const setEventListener = mediaConnection => {
 mediaConnection.on('stream', stream => {
-    // video要素にカメラ映像をセットして再生
+    // audio要素に音声をセットして再生
     const audioElm = document.getElementById('their-video')
     audioElm.srcObject = stream;
     audioElm.play();
