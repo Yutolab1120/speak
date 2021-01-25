@@ -3,7 +3,7 @@ let localStream;
 // 音声取得
 navigator.mediaDevices.getUserMedia({audio: true})
   .then( stream => {
-  // 成功時にaudio要素にカメラ映像をセットし、再生
+  // 成功時にaudio要素に音声をセットし、再生
   const audioElm = document.getElementById('my-video');
   audioElm.srcObject = stream;
   audioElm.play();
